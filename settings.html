@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Settings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'media' }</script>
+</head>
+<body class="relative min-h-screen transition-colors duration-300 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+  <main class="max-w-sm mx-auto px-4 pb-24 pt-[max(1rem,env(safe-area-inset-top))]">
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <a href="#" aria-label="Back" class="h-8 w-8 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-700 dark:stroke-slate-200" fill="none" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+      </a>
+      <h1 class="text-base font-semibold">Settings</h1>
+      <span class="h-8 w-8"></span>
+    </header>
+
+    <!-- Profile summary -->
+    <section class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <div class="flex items-center gap-3">
+        <div class="h-12 w-12 rounded-full border border-slate-200 dark:border-slate-700 grid place-items-center">
+          <svg viewBox="0 0 24 24" class="h-6 w-6 stroke-slate-700 dark:stroke-slate-200" fill="none" stroke-width="1.75">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/>
+          </svg>
+        </div>
+        <div class="min-w-0">
+          <div class="font-medium truncate">Benson Shedrach</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 truncate">benson@example.com</div>
+        </div>
+        <a href="#" class="ml-auto inline-flex items-center gap-1 text-sm font-medium px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700">
+          <svg viewBox="0 0 24 24" class="h-4 w-4 stroke-current" fill="none" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5l4 4L7 21 3 21l.5-4z"/></svg>
+          Edit
+        </a>
+      </div>
+    </section>
+
+    <!-- Account -->
+    <section class="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden">
+      <div class="px-4 py-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/60">Account</div>
+      <ul class="divide-y divide-slate-100 dark:divide-slate-800">
+        <li>
+          <a href="#" class="flex items-center justify-between gap-3 py-4 px-4">
+            <div class="flex items-center gap-3">
+              <span class="h-8 w-10 grid place-items-center rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-700 dark:stroke-slate-300" fill="none" stroke-width="1.75"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5z"/><path d="M4 21v-1a7 7 0 0 1 7-7h2a7 7 0 0 1 7 7v1"/></svg>
+              </span>
+              <div>
+                <div class="font-medium">Personal info</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400">Name, email, phone</div>
+              </div>
+            </div>
+            <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-400 dark:stroke-slate-500" fill="none" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center justify-between gap-3 py-4 px-4">
+            <div class="flex items-center gap-3">
+              <span class="h-8 w-10 grid place-items-center rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-700 dark:stroke-slate-300" fill="none" stroke-width="1.75"><path d="M12 12v8"/><path d="M8 16h8"/><circle cx="12" cy="8" r="4"/></svg>
+              </span>
+              <div>
+                <div class="font-medium">KYC & verification</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400">NIN / BVN / ID</div>
+              </div>
+            </div>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">Pending</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center justify-between gap-3 py-4 px-4">
+            <div class="flex items-center gap-3">
+              <span class="h-8 w-10 grid place-items-center rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-700 dark:stroke-slate-300" fill="none" stroke-width="1.75"><path d="M3 7h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7l9 6 9-6"/></svg>
+              </span>
+              <div>
+                <div class="font-medium">Emails & notifications</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400">Marketing, security, product</div>
+              </div>
+            </div>
+            <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-400 dark:stroke-slate-500" fill="none" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Security -->
+    <section class="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden">
+      <div class="px-4 py-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/60">Security</div>
+      <ul class="divide-y divide-slate-100 dark:divide-slate-800">
+        <!-- 2FA -->
+        <li class="px-4 py-3">
+          <div class="flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="h-8 w-10 grid place-items-center rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-700 dark:stroke-slate-300" fill="none" stroke-width="1.75"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+              <div>
+                <div class="font-medium">Two-factor authentication</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400">Authenticator app / SMS</div>
+              </div>
+            </div>
+            <!-- toggle -->
+            <label class="relative inline-flex items-center cursor-pointer select-none">
+              <input type="checkbox" class="peer sr-only" checked>
+              <span class="w-10 h-6 bg-slate-200 dark:bg-slate-700 rounded-full peer-checked:bg-emerald-600 transition-colors"></span>
+              <span class="absolute left-0.5 top-0.5 h-5 w-5 bg-white dark:bg-slate-900 rounded-full transition-transform peer-checked:translate-x-4"></span>
+            </label>
+          </div>
+        </li>
+        <!-- Change password -->
+        <li>
+          <a href="#" class="flex items-center justify-between gap-3 py-4">
+            <div class="flex items-center gap-3 px-4">
+              <span class="h-8 w-10 grid place-items-center rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-700 dark:stroke-slate-300" fill="none" stroke-width="1.75"><path d="M12 17v-6"/><path d="M8 13h8"/><rect x="4" y="11" width="16" height="8" rx="2"/></svg>
+              </span>
+              <div>
+                <div class="font-medium">Change password</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400">Update your login credentials</div>
+              </div>
+            </div>
+            <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-400 dark:stroke-slate-500" fill="none" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </li>
+        <!-- Sessions -->
+        <li>
+          <a href="#" class="flex items-center justify-between gap-3 py-4">
+            <div class="flex items-center gap-3 px-4">
+              <span class="h-8 w-10 grid place-items-center rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-700 dark:stroke-slate-300" fill="none" stroke-width="1.75"><path d="M9 15l6-6M15 15l-6-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+              </span>
+              <div>
+                <div class="font-medium">Active sessions</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400">Sign out from other devices</div>
+              </div>
+            </div>
+            <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-400 dark:stroke-slate-500" fill="none" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Preferences -->
+    <section class="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden">
+      <div class="px-4 py-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/60">Preferences</div>
+      <ul class="divide-y divide-slate-100 dark:divide-slate-800">
+        <li class="px-4 py-3">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <div class="font-medium">Currency</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Display amounts in</div>
+            </div>
+            <select class="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm py-2 px-2">
+              <option>USD ($)</option>
+              <option>EUR (€)</option>
+              <option>GBP (£)</option>
+              <option>NGN (₦)</option>
+            </select>
+          </div>
+        </li>
+        <li class="px-4 py-3">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <div class="font-medium">Language</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">App interface</div>
+            </div>
+            <select class="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm py-2 px-2">
+              <option>English</option>
+              <option>Deutsch</option>
+              <option>Français</option>
+            </select>
+          </div>
+        </li>
+        <li class="px-4 py-3">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <div class="font-medium">Privacy mode</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Hide balances & amounts</div>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer select-none">
+              <input type="checkbox" class="peer sr-only">
+              <span class="w-10 h-6 bg-slate-200 dark:bg-slate-700 rounded-full peer-checked:bg-emerald-600 transition-colors"></span>
+              <span class="absolute left-0.5 top-0.5 h-5 w-5 bg-white dark:bg-slate-900 rounded-full transition-transform peer-checked:translate-x-4"></span>
+            </label>
+          </div>
+        </li>
+        <li class="px-4 py-3">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <div class="font-medium">Theme</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Follows system preference</div>
+            </div>
+            <span class="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Auto</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Support & About -->
+    <section class="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden">
+      <ul class="divide-y divide-slate-100 dark:divide-slate-800">
+        <li>
+          <a href="#" class="flex items-center justify-between gap-3 py-4 px-4">
+            <div class="flex items-center gap-3">
+              <span class="h-8 w-10 grid place-items-center rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-700 dark:stroke-slate-300" fill="none" stroke-width="1.75"><path d="M12 20h9"/><path d="M16.5 3.5l4 4L7 21 3 21l.5-4z"/></svg>
+              </span>
+              <div class="font-medium">Help & Support</div>
+            </div>
+            <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-400 dark:stroke-slate-500" fill="none" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center justify-between gap-3 py-4 px-4">
+            <div class="flex items-center gap-3">
+              <span class="h-8 w-10 grid place-items-center rounded-lg bg-slate-50 dark:bg-slate-800">
+                <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-700 dark:stroke-slate-300" fill="none" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><path d="M12 8v4m0 4h.01"/></svg>
+              </span>
+              <div class="font-medium">About</div>
+            </div>
+            <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-400 dark:stroke-slate-500" fill="none" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Danger zone -->
+    <section class="mt-6">
+      <button class="w-full rounded-xl bg-rose-600 text-white py-3 font-medium">Sign out</button>
+      <button class="w-full mt-3 rounded-xl border border-rose-600 text-rose-700 dark:text-rose-300 py-3 font-medium bg-white dark:bg-slate-900">Delete account</button>
+      <p class="mt-2 text-[11px] text-slate-500 dark:text-slate-400 text-center">Deleting your account is permanent.</p>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="#" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        Home
+      </a>
+      <a href="#" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12h20M2 6h20M2 18h20"/></svg>
+        Wallet
+      </a>
+      <a href="#" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v8m4-4H8"/></svg>
+        Cards
+      </a>
+      <a href="#" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v2m6.364 1.636l-1.414 1.414M21 12h-2m-1.636 6.364l-1.414-1.414M12 21v-2m-6.364-1.636l1.414-1.414M3 12h2m1.636-6.364l1.414 1.414"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+</body>
+</html>

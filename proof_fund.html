@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proof of Funds</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { darkMode: 'media' } </script>
+</head>
+<body class="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between">
+
+  <main class="flex-1 max-w-sm mx-auto px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-28">
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <a href="verification-status.html" aria-label="Back" class="h-9 w-9 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+      </a>
+      <h1 class="text-base font-semibold">Proof of Funds</h1>
+      <span class="h-9 w-9"></span>
+    </header>
+
+    <!-- Status -->
+    <section class="rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-white dark:bg-slate-900">
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="text-sm font-semibold">Funding Source</div>
+          <div class="text-xs text-slate-600 dark:text-slate-400">Provide a recent statement or crypto proof</div>
+        </div>
+        <span class="text-xs px-2 py-1 rounded-full bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300">Not submitted</span>
+      </div>
+    </section>
+
+    <!-- Form -->
+    <section class="mt-4 rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-white dark:bg-slate-900 space-y-4">
+      <div>
+        <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Proof type</label>
+        <select class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3 py-2.5 text-sm">
+          <option>Bank statement (PDF/JPG)</option>
+          <option>Crypto exchange balance (screenshot)</option>
+          <option>On-chain wallet balance</option>
+        </select>
+      </div>
+
+      <!-- On-chain extras (can be optional) -->
+      <div class="grid grid-cols-1 gap-3">
+        <div>
+          <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Wallet address (optional)</label>
+          <input placeholder="0x..., TR..., bc1..." class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3 py-2.5 text-sm">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Asset</label>
+            <select class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3 py-2.5 text-sm">
+              <option>USDT</option><option>USDC</option><option>BTC</option><option>ETH</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Network</label>
+            <select class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3 py-2.5 text-sm">
+              <option>TRC20</option><option>ERC20</option><option>BTC</option><option>Polygon</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Amount range (min)</label>
+          <input type="number" inputmode="decimal" placeholder="1000.00" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3 py-2.5 text-sm">
+        </div>
+        <div>
+          <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Amount range (max)</label>
+          <input type="number" inputmode="decimal" placeholder="50000.00" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3 py-2.5 text-sm">
+        </div>
+      </div>
+
+      <div>
+        <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Upload proof</label>
+        <input type="file" class="mt-1 block w-full text-sm text-slate-500 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-emerald-50 file:text-emerald-700 dark:file:bg-emerald-900/40 dark:file:text-emerald-300">
+        <p class="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Accepted: PDF, JPG, PNG. Redact sensitive info if needed.</p>
+      </div>
+
+      <div>
+        <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Notes (optional)</label>
+        <textarea rows="3" placeholder="Explain your funding source or add context…" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3 py-2.5 text-sm"></textarea>
+      </div>
+    </section>
+
+    <!-- Submit -->
+    <div class="mt-5 grid grid-cols-2 gap-2">
+      <a href="verification-status.html" class="rounded-xl border border-slate-200 dark:border-slate-700 py-2.5 text-sm font-medium text-center">Cancel</a>
+      <button class="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 text-sm font-medium">Upload & submit</button>
+    </div>
+
+    <p class="mt-4 text-center text-[11px] text-slate-500 dark:text-slate-400">
+      Reviews usually complete within 24–48 hours. You’ll be notified in-app and by email.
+    </p>
+  </main>
+
+  <!-- Bottom Nav -->
+  <nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-700 bg-white/85 dark:bg-slate-900/80 backdrop-blur">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="wallet.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12h20M2 6h20M2 18h20"/></svg>Wallet
+      </a>
+      <a href="cards.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v8m4-4H8"/></svg>Cards
+      </a>
+      <a href="verification-status.html" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Verify
+      </a>
+      <a href="settings.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15..."/></svg>Settings
+      </a>
+    </div>
+  </nav>
+</body>
+</html>

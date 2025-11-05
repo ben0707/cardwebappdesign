@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Priority Parcel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { darkMode: 'media' } </script>
+</head>
+
+<body class="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between">
+  <main class="flex-1 max-w-sm mx-auto px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-28">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <a href="checkout.html" aria-label="Back" class="h-9 w-9 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+      </a>
+      <h1 class="text-base font-semibold">Priority Parcel</h1>
+      <span class="h-9 w-9"></span>
+    </header>
+
+    <!-- Info -->
+    <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 p-4">
+      <p class="text-xs text-slate-600 dark:text-slate-400">
+        Request cash delivery to your address or pick up from a partner location. Valid ID required on receipt.
+      </p>
+    </div>
+
+    <!-- Method -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <label class="block text-sm font-medium mb-2">Method</label>
+      <div class="grid grid-cols-2 gap-2 text-sm">
+        <label class="flex items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 py-2 cursor-pointer has-[:checked]:border-emerald-500">
+          <input type="radio" name="method" value="delivery" class="peer sr-only" checked>
+          <svg class="h-5 w-5 text-slate-600 dark:text-slate-300 peer-checked:text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h13l3 5v7H3z"/><path d="M16 7V4H3v3"/></svg>
+          Delivery
+        </label>
+        <label class="flex items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 py-2 cursor-pointer has-[:checked]:border-emerald-500">
+          <input type="radio" name="method" value="pickup" class="peer sr-only">
+          <svg class="h-5 w-5 text-slate-600 dark:text-slate-300 peer-checked:text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v10H3z"/><path d="M7 7V5h10v2"/></svg>
+          Pickup
+        </label>
+      </div>
+    </section>
+
+    <!-- Delivery form -->
+    <section id="section-delivery" class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 space-y-4">
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-sm font-medium mb-1">Recipient Name</label>
+          <input placeholder="e.g., Chinedu Okoye" class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Phone</label>
+          <input inputmode="tel" placeholder="+234 801 234 5678" class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Address</label>
+        <input placeholder="Street address" class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm mb-2">
+        <div class="grid grid-cols-2 gap-3">
+          <input placeholder="City" class="px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+          <input placeholder="State/Region" class="px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+        </div>
+        <div class="grid grid-cols-2 gap-3 mt-2">
+          <input placeholder="Postal Code" class="px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+          <select class="px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+            <option selected>Nigeria (NG)</option>
+            <option>Ghana (GH)</option>
+            <option>UK (GB)</option>
+            <option>USA (US)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-sm font-medium mb-1">Delivery Window</label>
+          <select class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+            <option>Today 4–6pm</option>
+            <option>Today 6–8pm</option>
+            <option>Tomorrow 10–12pm</option>
+            <option>Tomorrow 2–4pm</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Courier Speed</label>
+          <select class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+            <option>Standard (₦0)</option>
+            <option>Priority (₦1,000)</option>
+            <option>Express (₦2,500)</option>
+          </select>
+        </div>
+      </div>
+
+      <label class="flex items-center justify-between rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-3">
+        <div class="text-sm">
+          <div class="font-medium">Require ID on delivery</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400">BVN/NIN or passport</div>
+        </div>
+        <input type="checkbox" class="accent-emerald-600 h-5 w-5" checked>
+      </label>
+    </section>
+
+    <!-- Pickup form -->
+    <section id="section-pickup" class="hidden mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 space-y-4">
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-sm font-medium mb-1">Recipient Name</label>
+          <input placeholder="e.g., Aisha Bello" class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Phone</label>
+          <input inputmode="tel" placeholder="+234 701 234 5678" class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Pickup Center</label>
+        <select class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+          <option>Lekki Phase 1 (Mon–Sat 9–6)</option>
+          <option>Ikeja GRA (Mon–Sun 10–7)</option>
+          <option>VI Ajose Adeogun (Weekdays 9–5)</option>
+        </select>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-sm font-medium mb-1">Pickup Date</label>
+          <input type="date" class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Time Window</label>
+          <select class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+            <option>10–12pm</option><option>12–2pm</option><option>2–4pm</option><option>4–6pm</option>
+          </select>
+        </div>
+      </div>
+
+      <label class="flex items-center justify-between rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-3">
+        <div class="text-sm">
+          <div class="font-medium">Bring valid ID</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400">Must match recipient name</div>
+        </div>
+        <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">Required</span>
+      </label>
+    </section>
+
+    <!-- Amount & Summary -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-1">Amount (NGN)</label>
+        <input type="number" inputmode="decimal" placeholder="e.g., 250000.00" class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+        <p class="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Max ₦2,000,000 per request. Larger amounts split automatically.</p>
+      </div>
+
+      <div class="rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 p-3 text-sm">
+        <div class="flex justify-between py-1"><span>Handling Fee</span><span class="font-medium">₦500.00</span></div>
+        <div class="flex justify-between py-1"><span>Courier (est.)</span><span class="font-medium">₦1,000.00</span></div>
+        <div class="flex justify-between py-1"><span>Insurance (optional)</span><span class="font-medium">₦0.00</span></div>
+        <div class="flex justify-between py-2 border-t border-slate-100 dark:border-slate-800 mt-2">
+          <span class="font-semibold">Total due</span>
+          <span class="font-semibold text-emerald-600 dark:text-emerald-400">₦1,500.00</span>
+        </div>
+        <p class="mt-1 text-[11px] text-slate-500 dark:text-slate-400">ETA depends on window and traffic conditions.</p>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <div class="flex items-center justify-between">
+        <div class="text-sm">
+          <div class="font-medium">2FA Confirmation</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400">OTP required at review step</div>
+        </div>
+        <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">Enabled</span>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <div class="mt-4 grid grid-cols-2 gap-2">
+      <a href="checkout.html" class="rounded-xl border border-slate-200 dark:border-slate-700 py-3 text-sm font-medium text-center">Cancel</a>
+      <a href="priority-parcel-review.html" class="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-3 text-sm font-medium text-center">
+        Review & Request Courier
+      </a>
+    </div>
+
+    <p class="mt-3 text-center text-[11px] text-slate-500 dark:text-slate-400">
+      Couriers do not carry change. Please prepare exact amount for cash handover.
+    </p>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-700 bg-white/85 dark:bg-slate-900/80 backdrop-blur">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="wallet.html" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 6h20M2 18h20"/></svg>Wallet
+      </a>
+      <a href="cards.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v8m4-4H8"/></svg>Cards
+      </a>
+      <a href="notifications.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1 1 12 0v5l2 2H4l2-2z"/><path d="M9 18a3 3 0 0 0 6 0"/></svg>Alerts
+      </a>
+      <a href="settings.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-4 0v-.06a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 1 1 0-4h.06c.66 0 1.26-.39 1.51-1z"/></svg>Settings
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    // Tiny toggle for delivery/pickup sections
+    const radios = document.querySelectorAll('input[name="method"]');
+    const delivery = document.getElementById('section-delivery');
+    const pickup = document.getElementById('section-pickup');
+    function sync() {
+      const val = [...radios].find(r => r.checked)?.value;
+      if (val === 'pickup') { pickup.classList.remove('hidden'); delivery.classList.add('hidden'); }
+      else { delivery.classList.remove('hidden'); pickup.classList.add('hidden'); }
+    }
+    radios.forEach(r => r.addEventListener('change', sync));
+    sync();
+  </script>
+</body>
+</html>

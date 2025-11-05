@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edit Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'media' }</script>
+</head>
+<body class="relative min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+
+  <main class="max-w-sm mx-auto px-4 pb-28 pt-[max(1rem,env(safe-area-inset-top))]">
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <a href="profile.html" aria-label="Back" class="h-9 w-9 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-700 dark:stroke-slate-200" fill="none" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+      </a>
+      <h1 class="text-base font-semibold">Edit Profile</h1>
+      <span class="h-9 w-9"></span>
+    </header>
+
+    <!-- Avatar -->
+    <section class="text-center">
+      <div class="relative inline-block">
+        <img src="https://placehold.co/112x112" alt="Current avatar" class="h-28 w-28 rounded-full border-4 border-white dark:border-slate-900 shadow-lg object-cover">
+        <label class="absolute bottom-1 right-1 h-9 w-9 cursor-pointer grid place-items-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow">
+          <input type="file" accept="image/*" class="hidden" />
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19H4v-3L16.5 3.5z"/>
+          </svg>
+        </label>
+      </div>
+      <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">PNG/JPG up to 2MB</p>
+    </section>
+
+    <!-- Identity -->
+    <section class="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">First name</label>
+          <input placeholder="Benson" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm">
+        </div>
+        <div>
+          <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Last name</label>
+          <input placeholder="Shedrach" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm">
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Display name</label>
+        <input placeholder="Benson S." class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm">
+      </div>
+
+      <div class="mt-3">
+        <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Username (slug)</label>
+        <div class="relative mt-1">
+          <span class="absolute inset-y-0 left-0 pl-3 grid place-items-center text-slate-400 text-xs">@</span>
+          <input placeholder="benshed" class="pl-7 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm">
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Email</label>
+      <input type="email" placeholder="benson@btechdevhub.com" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm">
+
+      <div class="mt-3">
+        <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Phone</label>
+        <div class="mt-1 flex gap-2">
+          <select class="w-24 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm">
+            <option selected>+234</option>
+            <option>+1</option><option>+44</option><option>+49</option>
+          </select>
+          <input inputmode="tel" placeholder="812 000 1234" class="flex-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm">
+        </div>
+      </div>
+    </section>
+
+    <!-- Location -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Country</label>
+          <select class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm">
+            <option selected>Nigeria</option><option>Ghana</option><option>United States</option><option>Germany</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">State</label>
+          <input placeholder="Lagos" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm">
+        </div>
+      </div>
+      <div class="mt-3">
+        <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Address</label>
+        <input placeholder="Street, Apartment..." class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm">
+      </div>
+    </section>
+
+    <!-- Bio -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <label class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400">Bio</label>
+      <textarea rows="4" placeholder="Write a short bio..." class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm"></textarea>
+    </section>
+
+    <!-- Action Buttons -->
+    <div class="mt-6 flex gap-3">
+      <a href="profile.html" class="flex-1 text-center rounded-xl border border-slate-200 dark:border-slate-700 py-3 text-sm font-medium">Cancel</a>
+      <button class="flex-1 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-3 text-sm font-medium">Save Changes</button>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="wallet.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12h20M2 6h20M2 18h20"/></svg>
+        Wallet
+      </a>
+      <a href="cards.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v8m4-4H8"/></svg>
+        Cards
+      </a>
+      <a href="settings.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-4 0v-.06a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1 0-4h.06c.66 0 1.26-.39 1.51-1z"/></svg>
+        Settings
+      </a>
+      <a href="profile.html" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg viewBox="0 0 24 24" class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-3.5 5-5 8-5s6.5 1.5 8 5"/>
+        </svg>
+        Profile
+      </a>
+    </div>
+  </nav>
+</body>
+</html>

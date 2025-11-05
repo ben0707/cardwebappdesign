@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Withdrawal Successful</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { darkMode: 'media' } </script>
+</head>
+
+<body class="min-h-screen bg-white dark:bg-slate-950 flex flex-col justify-between text-slate-900 dark:text-slate-100">
+  <main class="flex-1 max-w-sm mx-auto px-4 pt-[max(2.5rem,env(safe-area-inset-top))] pb-28">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between mb-4">
+      <span class="h-9 w-9"></span>
+      <h1 class="text-base font-semibold">Withdrawal</h1>
+      <a href="wallet.html" class="h-9 w-9 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700" aria-label="Close">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 6l12 12M6 18L18 6"/>
+        </svg>
+      </a>
+    </header>
+
+    <!-- Success badge -->
+    <section class="text-center">
+      <div class="mx-auto h-16 w-16 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center">
+        <svg class="h-8 w-8 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M8 12l2.5 2.5L16 9" />
+        </svg>
+      </div>
+      <h2 class="mt-4 text-xl font-semibold tracking-tight">Withdrawal Successful</h2>
+      <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Your transfer has been submitted for processing.</p>
+    </section>
+
+    <!-- Amount card -->
+    <section class="mt-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5 text-center">
+      <div class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-1">Amount</div>
+      <div class="text-2xl font-semibold text-emerald-600 dark:text-emerald-400">₦124,950.00</div>
+      <div class="mt-1 text-xs text-slate-500 dark:text-slate-400">You’ll receive (after fees)</div>
+    </section>
+
+    <!-- Details -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 divide-y divide-slate-100 dark:divide-slate-800">
+      <div class="p-4 flex items-center justify-between">
+        <span class="text-sm text-slate-600 dark:text-slate-400">Beneficiary</span>
+        <span class="text-sm font-medium">Adewale Johnson</span>
+      </div>
+      <div class="p-4 flex items-center justify-between">
+        <span class="text-sm text-slate-600 dark:text-slate-400">Bank / Account</span>
+        <span class="text-sm font-medium text-right">GTBank (Savings) · <span class="font-mono">0123456789</span></span>
+      </div>
+      <div class="p-4 flex items-center justify-between">
+        <span class="text-sm text-slate-600 dark:text-slate-400">Sent</span>
+        <span class="text-sm font-medium">₦125,000.00</span>
+      </div>
+      <div class="p-4 flex items-center justify-between">
+        <span class="text-sm text-slate-600 dark:text-slate-400">Fee</span>
+        <span class="text-sm font-medium">₦50.00</span>
+      </div>
+      <div class="p-4 flex items-center justify-between">
+        <span class="text-sm text-slate-600 dark:text-slate-400">Reference</span>
+        <span class="text-sm font-mono">TX-3F29D8A1</span>
+      </div>
+      <div class="p-4 flex items-center justify-between">
+        <span class="text-sm text-slate-600 dark:text-slate-400">Date</span>
+        <span class="text-sm">Nov 5, 2025 · 16:05 GMT+1</span>
+      </div>
+      <div class="p-4 flex items-center justify-between">
+        <span class="text-sm text-slate-600 dark:text-slate-400">Status</span>
+        <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">Processed</span>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <section class="mt-6 grid grid-cols-1 gap-2">
+      <a href="receipt.html" class="w-full py-3 rounded-xl bg-slate-800 text-white dark:bg-slate-200 dark:text-slate-900 text-sm font-medium text-center">View Receipt</a>
+      <button class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium">Download PDF</button>
+      <a href="wallet.html" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium text-center">Go to Wallet</a>
+    </section>
+
+    <!-- Help -->
+    <p class="mt-5 text-center text-[11px] text-slate-500 dark:text-slate-400">
+      Need help? <a href="support.html" class="text-emerald-600 dark:text-emerald-400 font-medium">Contact support</a>
+    </p>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-700 bg-white/85 dark:bg-slate-900/80 backdrop-blur">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="wallet.html" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 6h20M2 18h20"/></svg>Wallet
+      </a>
+      <a href="cards.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v8m4-4H8"/></svg>Cards
+      </a>
+      <a href="notifications.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1 1 12 0v5l2 2H4l2-2z"/><path d="M9 18a3 3 0 0 0 6 0"/></svg>Alerts
+      </a>
+      <a href="settings.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-4 0v-.06a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 1 1 0-4h.06c.66 0 1.26-.39 1.51-1z"/></svg>Settings
+      </a>
+    </div>
+  </nav>
+</body>
+</html>

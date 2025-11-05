@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Review • Crypto Withdrawal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { darkMode: 'media' } </script>
+</head>
+<body class="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between">
+  <main class="flex-1 max-w-sm mx-auto px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-28">
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <a href="crypto-withdrawal.html" aria-label="Back"
+         class="h-9 w-9 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+      </a>
+      <h1 class="text-base font-semibold">Review & Confirm</h1>
+      <span class="h-9 w-9"></span>
+    </header>
+
+    <!-- Speed / Priority -->
+    <section class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <h2 class="text-sm font-semibold mb-2">Speed / Priority</h2>
+      <div class="grid grid-cols-3 gap-2 text-sm" id="speed-group">
+        <!-- Economy -->
+        <label class="relative flex flex-col items-start gap-1 rounded-xl border border-slate-200 dark:border-slate-700 p-3 cursor-pointer has-[:checked]:border-emerald-500">
+          <input type="radio" name="speed" value="economy" class="peer sr-only" checked>
+          <div class="flex items-center gap-2">
+            <span class="text-sm font-medium">Economy</span>
+            <span class="text-[11px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">Slow</span>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Lower fee • ETA ~60–120 min</span>
+        </label>
+
+        <!-- Standard -->
+        <label class="relative flex flex-col items-start gap-1 rounded-xl border border-slate-200 dark:border-slate-700 p-3 cursor-pointer has-[:checked]:border-emerald-500">
+          <input type="radio" name="speed" value="standard" class="peer sr-only">
+          <div class="flex items-center gap-2">
+            <span class="text-sm font-medium">Standard</span>
+            <span class="text-[11px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">Balanced</span>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Recommended • ETA ~20–60 min</span>
+        </label>
+
+        <!-- Fast -->
+        <label class="relative flex flex-col items-start gap-1 rounded-xl border border-slate-200 dark:border-slate-700 p-3 cursor-pointer has-[:checked]:border-emerald-500">
+          <input type="radio" name="speed" value="fast" class="peer sr-only">
+          <div class="flex items-center gap-2">
+            <span class="text-sm font-medium">Fast</span>
+            <span class="text-[11px] px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">Priority</span>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Higher fee • ETA ~5–20 min</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Summary -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
+      <h2 class="text-sm font-semibold mb-2">Withdrawal Summary</h2>
+      <ul class="text-sm space-y-2">
+        <li class="flex justify-between"><span>Asset</span><span class="font-medium" id="sum-asset">BTC</span></li>
+        <li class="flex justify-between"><span>Network</span><span class="font-medium" id="sum-netw">Bitcoin (BTC)</span></li>
+        <li class="flex justify-between">
+          <span>To</span>
+          <span class="font-mono text-xs sm:text-sm truncate max-w-[60%]" id="sum-to">bc1qxy2kgdygjrsqtzq2n0yrf...h0c5xw</span>
+        </li>
+        <li class="flex justify-between"><span>Memo / Tag</span><span class="font-medium" id="sum-memo">—</span></li>
+        <li class="flex justify-between"><span>Amount</span><span class="font-medium text-emerald-600 dark:text-emerald-400" id="sum-amt">0.240000 BTC</span></li>
+        <li class="flex justify-between"><span>Network Fee (est.)</span><span class="font-medium" id="sum-fee">0.000080 BTC</span></li>
+        <li class="flex justify-between"><span>ETA</span><span class="font-medium" id="sum-eta">~20–60 min</span></li>
+        <li class="flex justify-between border-top border-slate-100 dark:border-slate-800"></li>
+        <li class="flex justify-between border-t border-slate-100 dark:border-slate-800 pt-2 mt-1">
+          <span class="font-semibold">You’ll send</span>
+          <span class="font-semibold text-emerald-600 dark:text-emerald-400" id="sum-net">0.239920 BTC</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Risk Note -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-amber-50 dark:bg-amber-900/20 p-4">
+      <p class="text-xs text-amber-800 dark:text-amber-200">
+        On-chain transfers are irreversible. Ensure address and network are correct.
+      </p>
+    </section>
+
+    <!-- 2FA -->
+    <section class="mt-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
+      <h3 class="text-sm font-semibold mb-3">2FA Verification</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Enter the 6-digit code from your email or authenticator app.</p>
+      <div class="flex justify-between gap-2">
+        <input maxlength="1" class="w-10 h-12 text-center text-lg rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 focus:ring-2 focus:ring-emerald-500/40 outline-none">
+        <input maxlength="1" class="w-10 h-12 text-center text-lg rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 focus:ring-2 focus:ring-emerald-500/40 outline-none">
+        <input maxlength="1" class="w-10 h-12 text-center text-lg rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 focus:ring-2 focus:ring-emerald-500/40 outline-none">
+        <input maxlength="1" class="w-10 h-12 text-center text-lg rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 focus:ring-2 focus:ring-emerald-500/40 outline-none">
+        <input maxlength="1" class="w-10 h-12 text-center text-lg rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 focus:ring-2 focus:ring-emerald-500/40 outline-none">
+        <input maxlength="1" class="w-10 h-12 text-center text-lg rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 focus:ring-2 focus:ring-emerald-500/40 outline-none">
+      </div>
+      <p class="text-[11px] text-center text-slate-500 dark:text-slate-400 mt-3">Didn’t get a code? <a href="#" class="text-emerald-600 dark:text-emerald-400 font-medium">Resend</a></p>
+    </section>
+
+    <!-- Actions -->
+    <div class="mt-6 grid grid-cols-2 gap-2">
+      <a href="crypto-withdrawal.html" class="rounded-xl border border-slate-200 dark:border-slate-700 py-3 text-sm font-medium text-center">Back</a>
+      <a href="crypto-withdrawal-success.html" class="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-3 text-sm font-medium text-center">Confirm Withdrawal</a>
+    </div>
+
+    <p class="mt-4 text-center text-[11px] text-slate-500 dark:text-slate-400">
+      You’ll receive a transaction reference once broadcast to the network.
+    </p>
+  </main>
+
+  <!-- Bottom Nav -->
+  <nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-700 bg-white/85 dark:bg-slate-900/80 backdrop-blur">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="wallet.html" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 6h20M2 18h20"/></svg>Wallet
+      </a>
+      <a href="cards.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v8m4-4H8"/></svg>Cards
+      </a>
+      <a href="notifications.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1 1 12 0v5l2 2H4l2-2z"/><path d="M9 18a3 3 0 0 0 6 0"/></svg>Alerts
+      </a>
+      <a href="settings.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-4 0v-.06a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 1 1 0-4h.06c.66 0 1.26-.39 1.51-1z"/></svg>Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- Tiny JS hooks for fee & ETA updates -->
+  <script>
+    /**
+     * Replace this with your .NET fee quote object.
+     * For example, hydrate from server or session storage when landing on this page.
+     * window.__wd = {
+     *   asset: 'BTC', network: 'Bitcoin',
+     *   amount: 0.240000,
+     *   baseFee: { economy: 0.00006, standard: 0.00008, fast: 0.00012 },
+     *   eta:     { economy: '~60–120 min', standard: '~20–60 min', fast: '~5–20 min' },
+     *   address: 'bc1qxy2k...h0c5xw',
+     *   memo: null
+     * }
+     */
+    const wd = window.__wd || {
+      asset: 'BTC',
+      network: 'Bitcoin (BTC)',
+      amount: 0.240000,
+      baseFee: { economy: 0.00006, standard: 0.00008, fast: 0.00012 },
+      eta:     { economy: '~60–120 min', standard: '~20–60 min', fast: '~5–20 min' },
+      address: 'bc1qxy2kgdygjrsqtzq2n0yrf...h0c5xw',
+      memo: null
+    };
+
+    // DOM refs
+    const elFee = document.getElementById('sum-fee');
+    const elNet = document.getElementById('sum-net');
+    const elAmt = document.getElementById('sum-amt');
+    const elEta = document.getElementById('sum-eta');
+    const elAsset = document.getElementById('sum-asset');
+    const elNetw = document.getElementById('sum-netw');
+    const elTo = document.getElementById('sum-to');
+    const elMemo = document.getElementById('sum-memo');
+
+    function fmt(num) {
+      return (Math.round(num * 1e6) / 1e6).toFixed(6);
+    }
+
+    function render(speed) {
+      const fee = wd.baseFee[speed];
+      const net = Math.max(wd.amount - fee, 0);
+      elFee.textContent = `${fmt(fee)} ${wd.asset}`;
+      elNet.textContent = `${fmt(net)} ${wd.asset}`;
+      elAmt.textContent = `${fmt(wd.amount)} ${wd.asset}`;
+      elEta.textContent = wd.eta[speed];
+      elAsset.textContent = wd.asset;
+      elNetw.textContent = wd.network;
+      elTo.textContent = wd.address;
+      elMemo.textContent = wd.memo ? wd.memo : '—';
+    }
+
+    // init with currently-checked speed
+    const radios = [...document.querySelectorAll('input[name="speed"]')];
+    function currentSpeed() {
+      return (radios.find(r => r.checked) || { value: 'standard' }).value;
+    }
+    render(currentSpeed());
+
+    // handle changes
+    radios.forEach(r => r.addEventListener('change', () => {
+      render(r.value);
+      // Optional: call your API to re-quote fee for this speed, then update wd.baseFee[r.value] and render again.
+      // fetch(`/api/fees/quote?asset=${wd.asset}&network=${wd.network}&speed=${r.value}`)
+      //   .then(res => res.json())
+      //   .then(q => { wd.baseFee[r.value] = q.fee; render(r.value); });
+    }));
+  </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crypto Wallet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'media',
+      theme: {
+        extend: {
+          colors: { brand: { 500: '#10b981' } },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="min-h-screen bg-white dark:bg-slate-950 flex flex-col justify-between">
+  <main class="flex-1 max-w-sm mx-auto px-4 pt-[max(1.5rem,env(safe-area-inset-top))] pb-28">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between mb-4">
+      <a href="#" aria-label="User" class="h-9 w-9 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0 1 13 0"/></svg>
+      </a>
+      <h1 class="text-base font-semibold">My Wallet</h1>
+      <a href="notifications.html" aria-label="Notifications" class="h-9 w-9 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700 relative">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0v5l2 2H4l2-2z"/><path d="M9 18a3 3 0 0 0 6 0"/></svg>
+        <span class="absolute top-1 right-1 h-2 w-2 bg-emerald-500 rounded-full"></span>
+      </a>
+    </header>
+
+    <!-- Total Balance -->
+    <section class="text-center mt-2">
+      <p class="text-xs text-slate-500 dark:text-slate-400">Total Portfolio Balance</p>
+      <h2 class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 mt-1">$45,320.80</h2>
+      <p class="text-xs mt-1 text-emerald-600 dark:text-emerald-400">+2.48% Today</p>
+    </section>
+
+    <!-- Action Buttons -->
+    <section class="mt-5 grid grid-cols-4 gap-3">
+      <button class="flex flex-col items-center justify-center rounded-2xl bg-emerald-600 text-white py-3 text-xs font-medium">
+        <svg class="h-5 w-5 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 19V5m-7 7h14"/></svg>
+        Deposit
+      </button>
+      <button class="flex flex-col items-center justify-center rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 py-3 text-xs font-medium">
+        <svg class="h-5 w-5 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12H2m10-7l7 7-7 7"/></svg>
+        Send
+      </button>
+      <button class="flex flex-col items-center justify-center rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 py-3 text-xs font-medium">
+        <svg class="h-5 w-5 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+        Receive
+      </button>
+      <button class="flex flex-col items-center justify-center rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 py-3 text-xs font-medium">
+        <svg class="h-5 w-5 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582a9 9 0 0 1 8.918 8.918V20h5v-5h-.582a9 9 0 0 1-8.918-8.918V4z"/></svg>
+        Swap
+      </button>
+    </section>
+
+    <!-- Wallet Assets -->
+    <section class="mt-6">
+      <h3 class="text-sm font-semibold mb-2">My Assets</h3>
+      <div class="space-y-2">
+        <!-- BTC -->
+        <div class="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-full bg-orange-100 grid place-items-center">
+              <span class="text-orange-500 font-bold">₿</span>
+            </div>
+            <div>
+              <div class="text-sm font-semibold">Bitcoin</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">BTC</div>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-sm font-medium">$25,240.40</div>
+            <div class="text-xs text-emerald-600 dark:text-emerald-400">+1.28%</div>
+          </div>
+        </div>
+
+        <!-- ETH -->
+        <div class="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-full bg-indigo-100 grid place-items-center">
+              <span class="text-indigo-500 font-bold">Ξ</span>
+            </div>
+            <div>
+              <div class="text-sm font-semibold">Ethereum</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">ETH</div>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-sm font-medium">$13,640.00</div>
+            <div class="text-xs text-emerald-600 dark:text-emerald-400">+0.94%</div>
+          </div>
+        </div>
+
+        <!-- USDT -->
+        <div class="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-full bg-green-100 grid place-items-center">
+              <span class="text-green-500 font-bold">₮</span>
+            </div>
+            <div>
+              <div class="text-sm font-semibold">Tether USD</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">USDT</div>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-sm font-medium">$6,440.40</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">0.00%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Transactions -->
+    <section class="mt-6">
+      <h3 class="text-sm font-semibold mb-2">Recent Transactions</h3>
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 divide-y divide-slate-100 dark:divide-slate-800">
+        <div class="flex items-center justify-between p-4">
+          <div class="flex items-center gap-3">
+            <div class="h-8 w-8 rounded-full bg-emerald-100 dark:bg-emerald-900/40 grid place-items-center">
+              <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 19V5m-7 7h14"/></svg>
+            </div>
+            <div>
+              <div class="text-sm font-medium">Received BTC</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">From wallet 0xD1a...9bC</div>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">+0.045 BTC</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">2 hrs ago</div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between p-4">
+          <div class="flex items-center gap-3">
+            <div class="h-8 w-8 rounded-full bg-red-100 dark:bg-red-900/40 grid place-items-center">
+              <svg class="h-4 w-4 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12H2m10-7l7 7-7 7"/></svg>
+            </div>
+            <div>
+              <div class="text-sm font-medium">Sent ETH</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">To 0xA34...91D</div>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-sm font-semibold text-red-600 dark:text-red-400">−0.26 ETH</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Yesterday</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-700 bg-white/85 dark:bg-slate-900/80 backdrop-blur">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="wallet.html" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12h20M2 6h20M2 18h20"/></svg>
+        Wallet
+      </a>
+      <a href="cards.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v8m4-4H8"/></svg>
+        Cards
+      </a>
+      <a href="notifications.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0v5l2 2H4l2-2z"/><path d="M9 18a3 3 0 0 0 6 0"/></svg>
+        Alerts
+      </a>
+      <a href="settings.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-4 0v-.06a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 1 1 0-4h.06c.66 0 1.26-.39 1.51-1z"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+</body>
+</html>

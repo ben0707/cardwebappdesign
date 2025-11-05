@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Transaction Status</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'media' };
+  </script>
+
+  <style>
+    /* Dynamic status color system */
+    body.status-approved { --color-primary: #059669; --color-bg: #ecfdf5; }
+    body.status-review { --color-primary: #eab308; --color-bg: #fefce8; }
+    body.status-rejected { --color-primary: #dc2626; --color-bg: #fef2f2; }
+
+    .status-icon {
+      background-color: var(--color-bg);
+      color: var(--color-primary);
+    }
+    .status-label {
+      background-color: var(--color-bg);
+      color: var(--color-primary);
+    }
+    .status-text {
+      color: var(--color-primary);
+    }
+  </style>
+</head>
+
+<!-- Change class below to "status-approved", "status-review", or "status-rejected" -->
+<body class="status-review min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between">
+
+  <main class="flex-1 max-w-sm mx-auto px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-28">
+    
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <a href="wallet.html" aria-label="Back" class="h-9 w-9 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>
+      </a>
+      <h1 class="text-base font-semibold">Transaction Status</h1>
+      <span class="h-9 w-9"></span>
+    </header>
+
+    <!-- Status Overview -->
+    <div class="text-center mt-6">
+      <div class="mx-auto h-20 w-20 rounded-full status-icon flex items-center justify-center">
+        <!-- Status icon -->
+        <svg id="statusIcon" class="h-10 w-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <!-- Under Review Icon (default) -->
+          <path id="statusIconPath1" d="M12 8v4m0 4h.01"/>
+          <circle id="statusIconPath2" cx="12" cy="12" r="10"/>
+        </svg>
+      </div>
+      <h2 id="statusTitle" class="mt-4 text-lg font-semibold status-text">Under Review</h2>
+      <p id="statusDesc" class="mt-1 text-sm text-slate-600 dark:text-slate-400">
+        Your payment is being verified. This usually takes 10–30 minutes.
+      </p>
+    </div>
+
+    <!-- Transaction Info -->
+    <section class="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
+      <h3 class="text-sm font-semibold mb-2">Transaction Details</h3>
+      <div class="flex justify-between text-sm">
+        <span class="text-slate-500 dark:text-slate-400">Reference</span>
+        <span class="font-mono text-slate-800 dark:text-slate-100">REF-9X3B2K</span>
+      </div>
+      <div class="flex justify-between text-sm mt-1">
+        <span class="text-slate-500 dark:text-slate-400">Amount</span>
+        <span class="font-semibold text-slate-800 dark:text-slate-100">$1,255.00</span>
+      </div>
+      <div class="flex justify-between text-sm mt-1">
+        <span class="text-slate-500 dark:text-slate-400">Payment Method</span>
+        <span class="text-slate-800 dark:text-slate-100">Bank Transfer</span>
+      </div>
+      <div class="flex justify-between text-sm mt-1">
+        <span class="text-slate-500 dark:text-slate-400">Date</span>
+        <span class="text-slate-800 dark:text-slate-100">Nov 5, 2025 · 15:04</span>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="mt-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
+      <h3 class="text-sm font-semibold mb-4">Timeline</h3>
+      <ol class="relative border-l border-slate-200 dark:border-slate-700 ml-3 space-y-6">
+        <li class="flex items-start">
+          <span class="absolute -left-3 flex items-center justify-center w-6 h-6 rounded-full bg-emerald-600 text-white">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg>
+          </span>
+          <div class="ml-4">
+            <h4 class="text-sm font-semibold">Payment Submitted</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400">We’ve received your transfer details.</p>
+            <span class="text-[11px] text-slate-500 dark:text-slate-400">Nov 5, 2025 · 15:04</span>
+          </div>
+        </li>
+
+        <li class="flex items-start">
+          <span class="absolute -left-3 flex items-center justify-center w-6 h-6 rounded-full status-icon text-white">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 8v4m0 4h.01"/>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+          </span>
+          <div class="ml-4">
+            <h4 class="text-sm font-semibold status-text">Under Review</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400">Verification by finance team.</p>
+            <span class="text-[11px] text-slate-500 dark:text-slate-400">Nov 5, 2025 · 15:10</span>
+          </div>
+        </li>
+
+        <li class="flex items-start opacity-60">
+          <span class="absolute -left-3 flex items-center justify-center w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-400">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          </span>
+          <div class="ml-4">
+            <h4 class="text-sm font-semibold">Approved</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400">Funds will reflect soon.</p>
+            <span class="text-[11px] text-slate-500 dark:text-slate-400">Pending</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Action Buttons -->
+    <div class="mt-6 grid grid-cols-2 gap-3">
+      <a href="wallet.html" class="rounded-xl border border-slate-200 dark:border-slate-700 py-3 text-sm font-medium text-center">Back</a>
+      <a href="support.html" class="rounded-xl bg-[var(--color-primary)] text-white py-3 text-sm font-medium text-center">Contact Support</a>
+    </div>
+
+    <p class="mt-4 text-center text-[11px] text-slate-500 dark:text-slate-400">
+      You’ll receive an alert once this transaction is finalized.
+    </p>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-700 bg-white/85 dark:bg-slate-900/80 backdrop-blur">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="wallet.html" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12h20M2 6h20M2 18h20"/></svg>
+        Wallet
+      </a>
+      <a href="cards.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v8m4-4H8"/></svg>
+        Cards
+      </a>
+      <a href="notifications.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0v5l2 2H4l2-2z"/><path d="M9 18a3 3 0 0 0 6 0"/></svg>
+        Alerts
+      </a>
+      <a href="settings.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-4 0v-.06a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 1 1 0-4h.06c.66 0 1.26-.39 1.51-1z"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- JS Simulation for Switching States -->
+  <script>
+    // Simulate backend-driven status switch
+    const status = document.body.classList;
+    const title = document.getElementById('statusTitle');
+    const desc = document.getElementById('statusDesc');
+    const icon = document.getElementById('statusIcon');
+    const p1 = document.getElementById('statusIconPath1');
+    const p2 = document.getElementById('statusIconPath2');
+
+    if (status.contains('status-approved')) {
+      title.textContent = 'Approved';
+      desc.textContent = 'Your payment was verified and credited successfully.';
+      icon.innerHTML = '<circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/>';
+    }
+    if (status.contains('status-rejected')) {
+      title.textContent = 'Rejected';
+      desc.textContent = 'Your payment could not be verified. Please contact support.';
+      icon.innerHTML = '<circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/>';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bank Transfer Submitted</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'media' }</script>
+</head>
+
+<body class="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between">
+
+  <main class="flex-1 max-w-sm mx-auto px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-28 text-center">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <span class="h-9 w-9"></span>
+      <h1 class="text-base font-semibold">Payment Submitted</h1>
+      <span class="h-9 w-9"></span>
+    </header>
+
+    <!-- Success Icon -->
+    <div class="mt-6 flex justify-center">
+      <div class="h-20 w-20 rounded-full bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center">
+        <svg class="h-10 w-10 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M9 12l2 2 4-4" />
+        </svg>
+      </div>
+    </div>
+
+    <h2 class="mt-5 text-lg font-semibold">Your Payment Has Been Submitted</h2>
+    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">
+      We’ve received your transfer details. Our team will verify your payment shortly.
+    </p>
+
+    <!-- Transaction Details -->
+    <section class="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-left p-5 space-y-3">
+      <h3 class="text-sm font-semibold">Transaction Details</h3>
+
+      <div class="flex justify-between text-sm">
+        <span class="text-slate-500 dark:text-slate-400">Status</span>
+        <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300">Under Review</span>
+      </div>
+
+      <div class="flex justify-between text-sm">
+        <span class="text-slate-500 dark:text-slate-400">Reference</span>
+        <span class="font-mono text-slate-800 dark:text-slate-100">REF-9X3B2K</span>
+      </div>
+
+      <div class="flex justify-between text-sm">
+        <span class="text-slate-500 dark:text-slate-400">Amount</span>
+        <span class="font-semibold text-slate-800 dark:text-slate-100">$1,255.00</span>
+      </div>
+
+      <div class="flex justify-between text-sm">
+        <span class="text-slate-500 dark:text-slate-400">Bank</span>
+        <span class="text-slate-800 dark:text-slate-100">First National Bank</span>
+      </div>
+
+      <div class="flex justify-between text-sm">
+        <span class="text-slate-500 dark:text-slate-400">Account Name</span>
+        <span class="text-slate-800 dark:text-slate-100">BTECH Development Hub Ltd.</span>
+      </div>
+
+      <div class="flex justify-between text-sm">
+        <span class="text-slate-500 dark:text-slate-400">Date</span>
+        <span class="text-slate-800 dark:text-slate-100">Nov 5, 2025 · 15:04</span>
+      </div>
+    </section>
+
+    <!-- Notice -->
+    <p class="mt-5 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+      ⚠️ Do not resend payment unless instructed. Review typically completes within <span class="font-medium text-slate-700 dark:text-slate-200">30 minutes to 1 hour</span>.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="mt-8 grid grid-cols-1 gap-3">
+      <a href="wallet.html" class="block rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-3 text-sm font-medium text-center transition">
+        Back to Wallet
+      </a>
+      <a href="support.html" class="block rounded-xl border border-slate-200 dark:border-slate-700 py-3 text-sm font-medium text-center hover:bg-slate-50 dark:hover:bg-slate-900/60 transition">
+        Contact Support
+      </a>
+    </div>
+
+    <p class="mt-5 text-[11px] text-slate-500 dark:text-slate-400">
+      Your payment reference: <span class="font-mono font-medium text-slate-700 dark:text-slate-200">REF-9X3B2K</span>
+    </p>
+
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-700 bg-white/85 dark:bg-slate-900/80 backdrop-blur">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="wallet.html" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12h20M2 6h20M2 18h20"/></svg>Wallet
+      </a>
+      <a href="cards.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v8m4-4H8"/></svg>Cards
+      </a>
+      <a href="notifications.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0v5l2 2H4l2-2z"/><path d="M9 18a3 3 0 0 0 6 0"/></svg>Alerts
+      </a>
+      <a href="settings.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-4 0v-.06a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 1 1 0-4h.06c.66 0 1.26-.39 1.51-1z"/></svg>Settings
+      </a>
+    </div>
+  </nav>
+</body>
+</html>

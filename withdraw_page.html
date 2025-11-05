@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Freeze Card</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'media' }</script>
+</head>
+<body class="relative min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+
+  <main class="max-w-sm mx-auto px-4 pb-28 pt-[max(1rem,env(safe-area-inset-top))]">
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <a href="card-details.html" aria-label="Back" class="h-9 w-9 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-slate-700 dark:stroke-slate-200" fill="none" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+      </a>
+      <h1 class="text-base font-semibold">Freeze Card</h1>
+      <span class="h-9 w-9"></span>
+    </header>
+
+    <!-- Card Preview -->
+    <section class="rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 dark:from-slate-700 dark:via-slate-800 dark:to-black text-white shadow-xl">
+      <div class="p-5">
+        <div class="flex items-start justify-between">
+          <div>
+            <div class="text-xl font-semibold">NEXO</div>
+            <div class="text-[10px] uppercase font-bold tracking-wide text-white/80 mt-1">Virtual • Credit</div>
+          </div>
+          <svg viewBox="0 0 48 24" class="w-10 h-5">
+            <circle cx="15" cy="12" r="6" fill="#EB001B"></circle>
+            <circle cx="25" cy="12" r="6" fill="#F79E1B" fill-opacity="0.9"></circle>
+          </svg>
+        </div>
+        <div class="mt-6 text-center tracking-widest text-lg font-medium">**** **** **** 2341</div>
+        <div class="mt-2 text-center text-xs text-white/80">Expires 09/28 • Mastercard</div>
+      </div>
+    </section>
+
+    <!-- Warning / Effects -->
+    <section class="mt-6 rounded-2xl border border-rose-300/50 dark:border-rose-400/30 bg-rose-50 dark:bg-rose-900/10 p-4">
+      <div class="flex items-start gap-3">
+        <span class="h-9 w-9 grid place-items-center rounded-lg bg-white/60 dark:bg-slate-900/40">
+          <svg viewBox="0 0 24 24" class="h-5 w-5 stroke-rose-700 dark:stroke-rose-300" fill="none" stroke-width="2">
+            <path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          </svg>
+        </span>
+        <div>
+          <div class="font-semibold">Freezing will immediately block new transactions</div>
+          <ul class="mt-1 text-sm text-rose-900/90 dark:text-rose-200 space-y-1">
+            <li>• In-store and online purchases will be declined.</li>
+            <li>• Wallets (Apple/Google Pay) will stop working.</li>
+            <li>• Recurring payments may fail until unfreezing.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reason (optional) -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <label for="reason" class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">Reason (optional)</label>
+      <select id="reason" class="mt-2 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 py-2.5 px-3 text-sm">
+        <option selected>Temporary lock</option>
+        <option>Card misplaced</option>
+        <option>Suspicious activity</option>
+        <option>Lost or stolen</option>
+        <option>Other</option>
+      </select>
+      <textarea rows="3" placeholder="Add a note (optional)" class="mt-2 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm placeholder-slate-400"></textarea>
+    </section>
+
+    <!-- Confirmation & Security -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <div class="flex items-start gap-3">
+        <input id="agree" type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-300 dark:border-slate-600 accent-emerald-600">
+        <label for="agree" class="text-sm">I understand the effects of freezing this card and want to proceed.</label>
+      </div>
+
+      <div class="mt-4 grid grid-cols-2 gap-2">
+        <div>
+          <label class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">2FA Code</label>
+          <input inputmode="numeric" placeholder="123456" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm">
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">PIN</label>
+          <input inputmode="numeric" placeholder="****" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 px-3 py-2.5 text-sm">
+        </div>
+      </div>
+
+      <p class="mt-3 text-[11px] text-slate-500 dark:text-slate-400">
+        You can unfreeze anytime from Card Details. For stolen cards, contact support after freezing.
+      </p>
+    </section>
+
+    <!-- Actions -->
+    <div class="fixed bottom-16 left-0 right-0">
+      <div class="max-w-sm mx-auto px-4 grid grid-cols-2 gap-2">
+        <a href="card-details.html" class="rounded-xl border border-slate-200 dark:border-slate-700 py-3 text-center font-medium">Cancel</a>
+        <button class="rounded-xl bg-rose-600 hover:bg-rose-700 text-white py-3 font-medium">Freeze Card</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="#" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        Home
+      </a>
+      <a href="#" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12h20M2 6h20M2 18h20"/></svg>
+        Wallet
+      </a>
+      <a href="#" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v8m4-4H8"/></svg>
+        Cards
+      </a>
+      <a href="#" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-4 0v-.06a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1 0-4h.06c.66 0 1.26-.39 1.51-1z"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+</body>
+</html>

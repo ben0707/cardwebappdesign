@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crypto Wallet • Checkout</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { darkMode: 'media' } </script>
+</head>
+
+<body class="min-h-screen bg-white dark:bg-slate-950 flex flex-col justify-between">
+  <main class="flex-1 max-w-sm mx-auto px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-28">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <a href="checkout.html" aria-label="Back"
+         class="h-9 w-9 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 6l-6 6 6 6"/>
+        </svg>
+      </a>
+      <h1 class="text-base font-semibold">Crypto Checkout</h1>
+      <span class="h-9 w-9"></span>
+    </header>
+
+    <!-- Note -->
+    <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/60 p-4">
+      <p class="text-xs text-slate-600 dark:text-slate-400">
+        Enter the amount, choose your crypto asset and network. You’ll see fees and an on-chain estimate before continuing.
+      </p>
+    </div>
+
+    <!-- Amount -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <label class="block text-sm font-medium mb-1">Amount (Fiat)</label>
+      <div class="flex items-center gap-2">
+        <select aria-label="Currency"
+                class="px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+          <option selected>USD</option>
+          <option>EUR</option>
+          <option>NGN</option>
+          <option>GBP</option>
+        </select>
+        <input type="number" inputmode="decimal" placeholder="e.g., 1250.00"
+               class="flex-1 px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+      </div>
+      <p class="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Min $10 • Large payments may require multiple network confirms.</p>
+    </section>
+
+    <!-- Asset & Network -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <h2 class="text-sm font-semibold mb-2">Select Asset & Network</h2>
+
+      <!-- Quick picks -->
+      <div class="flex flex-wrap gap-2 mb-3">
+        <button class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs">BTC • Bitcoin</button>
+        <button class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs">ETH • Ethereum</button>
+        <button class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs">USDT • TRC20</button>
+        <button class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs">USDT • ERC20</button>
+        <button class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs">USDC • SOL</button>
+      </div>
+
+      <!-- Search -->
+      <div class="relative mb-3">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 stroke-slate-400" viewBox="0 0 24 24" fill="none" stroke-width="2">
+          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
+        </svg>
+        <input placeholder="Search asset or network (BTC, ETH, USDT TRC20, USDC ERC20, BNB BSC, TRX, SOL, LTC...)"
+               class="w-full pl-10 pr-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40">
+      </div>
+
+      <!-- Asset -->
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-sm font-medium mb-1">Asset</label>
+          <select class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+            <option>BTC • Bitcoin</option>
+            <option>ETH • Ethereum</option>
+            <option selected>USDT • Tether</option>
+            <option>USDC • USD Coin</option>
+            <option>BNB • BNB</option>
+            <option>TRX • TRON</option>
+            <option>SOL • Solana</option>
+            <option>LTC • Litecoin</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Network</label>
+          <select class="w-full px-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm">
+            <!-- show contextually based on asset in your app -->
+            <option selected>TRON (TRC20)</option>
+            <option>Ethereum (ERC20)</option>
+            <option>BNB Smart Chain (BEP20)</option>
+            <option>Solana (SOL)</option>
+            <option>Polygon (PoS)</option>
+            <option>Arbitrum One</option>
+            <option>Base</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Advanced -->
+      <details class="mt-3 rounded-xl border border-slate-200 dark:border-slate-700 p-3">
+        <summary class="text-sm font-medium cursor-pointer">Advanced options</summary>
+        <div class="mt-3 grid grid-cols-2 gap-3 text-sm">
+          <div>
+            <label class="block text-sm font-medium mb-1">Preferred confirmations</label>
+            <select class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950">
+              <option>Default (recommended)</option>
+              <option>Fast (higher fee)</option>
+              <option>Economy</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Memo / Tag (if any)</label>
+            <input placeholder="XRP tag, TON memo, etc." class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950">
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- Summary -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <h2 class="text-sm font-semibold mb-2">Payment Summary</h2>
+      <div class="text-sm text-slate-700 dark:text-slate-300 space-y-1">
+        <div class="flex justify-between">
+          <span>Amount</span>
+          <span class="font-medium" id="fiat-amt">$1,250.00</span>
+        </div>
+        <div class="flex justify-between">
+          <span>Network fee (est.)</span>
+          <span class="font-medium" id="net-fee">$1.20</span>
+        </div>
+        <div class="flex justify-between">
+          <span>Processing</span>
+          <span class="font-medium" id="proc-fee">$0.80</span>
+        </div>
+        <div class="flex justify-between">
+          <span>Rate (locked 10 min)</span>
+          <span class="font-medium" id="fx-rate">1 USDT ≈ $1.00</span>
+        </div>
+        <div class="flex justify-between border-t border-slate-100 dark:border-slate-800 pt-2 mt-1">
+          <span class="font-semibold">You’ll send</span>
+          <span class="font-semibold text-emerald-600 dark:text-emerald-400" id="crypto-amt">1,250.000000 USDT</span>
+        </div>
+      </div>
+      <p class="mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+        You’ll get the deposit address & QR on the next page. Send only the selected asset on the chosen network.
+      </p>
+    </section>
+
+    <!-- Security -->
+    <section class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+      <div class="flex items-center justify-between">
+        <div class="text-sm">
+          <div class="font-medium">Risk checks</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400">We screen addresses for sanctions & risk.</div>
+        </div>
+        <span class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">Enabled</span>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <div class="mt-5 grid grid-cols-2 gap-2">
+      <a href="checkout.html" class="rounded-xl border border-slate-200 dark:border-slate-700 py-3 text-sm font-medium text-center">Cancel</a>
+      <a href="crypto-deposit-address.html"
+         class="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-3 text-sm font-medium text-center">Continue</a>
+    </div>
+
+    <p class="mt-3 text-center text-[11px] text-slate-500 dark:text-slate-400">
+      Sending the wrong asset or network may result in loss of funds.
+    </p>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-700 bg-white/85 dark:bg-slate-900/80 backdrop-blur">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="wallet.html" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 6h20M2 18h20"/></svg>Wallet
+      </a>
+      <a href="cards.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v8m4-4H8"/></svg>Cards
+      </a>
+      <a href="notifications.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1 1 12 0v5l2 2H4l2-2z"/><path d="M9 18a3 3 0 0 0 6 0"/></svg>Alerts
+      </a>
+      <a href="settings.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-4 0v-.06a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 1 1 0-4h.06c.66 0 1.26-.39 1.51-1z"/></svg>Settings
+      </a>
+    </div>
+  </nav>
+</body>
+</html>

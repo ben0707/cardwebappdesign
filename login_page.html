@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login | Wallet App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'media' }
+  </script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+  <main class="w-full max-w-md px-6 py-12">
+
+    <!-- Header -->
+    <header class="text-center mb-10">
+      <div class="mx-auto h-14 w-14 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center">
+        <svg class="w-7 h-7 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 8v4l3 3" />
+        </svg>
+      </div>
+      <h1 class="mt-5 text-2xl font-semibold tracking-tight">Welcome Back</h1>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Sign in to access your wallet dashboard securely.
+      </p>
+    </header>
+
+    <!-- Login Form -->
+    <form class="space-y-6">
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com"
+          class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40">
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label for="password" class="block text-sm font-medium mb-2">Password</label>
+        <div class="relative">
+          <input id="password" name="password" type="password" placeholder="••••••••"
+            class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40">
+          <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path d="M2.458 12C3.732 7.943 7.523 5 12 5s8.268 2.943 9.542 7c-1.274 4.057-5.065 7-9.542 7s-8.268-2.943-9.542-7z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Remember & Forgot -->
+      <div class="flex items-center justify-between text-sm">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" class="accent-emerald-600 w-4 h-4 rounded">
+          <span class="text-slate-600 dark:text-slate-400">Remember me</span>
+        </label>
+        <a href="forgot-password.html" class="text-emerald-600 dark:text-emerald-400 hover:underline font-medium">Forgot password?</a>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="w-full py-3.5 mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition">
+        Sign In
+      </button>
+
+     
+    
+     
+    </form>
+  </main>
+</body>
+</html>

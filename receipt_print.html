@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white dark:bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Receipt · Payment Successful</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { darkMode: 'media' } </script>
+</head>
+
+<body class="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between">
+
+  <main class="flex-1 max-w-sm mx-auto px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-28">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <a href="transaction-status.html" aria-label="Back" class="h-9 w-9 grid place-items-center rounded-full border border-slate-200 dark:border-slate-700">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>
+      </a>
+      <h1 class="text-base font-semibold">Receipt</h1>
+      <span class="h-9 w-9"></span>
+    </header>
+
+    <!-- Success Badge -->
+    <div class="flex flex-col items-center text-center mt-2">
+      <div class="h-20 w-20 rounded-full bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center">
+        <svg class="h-10 w-10 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+      </div>
+      <h2 class="mt-4 text-lg font-semibold">Payment Successful</h2>
+      <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Your funds have been credited to your wallet.</p>
+    </div>
+
+    <!-- Receipt Card -->
+    <section class="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden">
+      <!-- Branding strip -->
+      <div class="h-1.5 bg-emerald-600"></div>
+
+      <div class="p-5">
+        <!-- Top line -->
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Receipt No.</div>
+            <div class="font-mono text-sm">RCT-8F2K93</div>
+          </div>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">Paid</span>
+        </div>
+
+        <!-- Amount -->
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <div class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Amount</div>
+            <div class="text-2xl font-semibold text-emerald-600 dark:text-emerald-400">$1,255.00</div>
+          </div>
+          <div class="text-right">
+            <div class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Date</div>
+            <div class="text-sm">Nov 5, 2025 · 15:22</div>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="mt-5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 p-4">
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-600 dark:text-slate-400">Payment Method</span>
+            <span class="text-slate-800 dark:text-slate-100">Bank Transfer</span>
+          </div>
+          <div class="mt-2 flex justify-between text-sm">
+            <span class="text-slate-600 dark:text-slate-400">Reference</span>
+            <span class="font-mono text-slate-800 dark:text-slate-100">REF-9X3B2K</span>
+          </div>
+          <div class="mt-2 flex justify-between text-sm">
+            <span class="text-slate-600 dark:text-slate-400">Subtotal</span>
+            <span class="text-slate-800 dark:text-slate-100">$1,250.00</span>
+          </div>
+          <div class="mt-2 flex justify-between text-sm">
+            <span class="text-slate-600 dark:text-slate-400">Fees</span>
+            <span class="text-slate-800 dark:text-slate-100">$5.00</span>
+          </div>
+          <div class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 flex justify-between text-sm font-semibold">
+            <span>Total</span>
+            <span class="text-emerald-600 dark:text-emerald-400">$1,255.00</span>
+          </div>
+        </div>
+
+        <!-- Metadata -->
+        <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-3">
+            <div class="text-xs uppercase text-slate-500 dark:text-slate-400">Credited To</div>
+            <div class="mt-1 font-medium">Main USD Wallet</div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400">Balance updated</div>
+          </div>
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-3">
+            <div class="text-xs uppercase text-slate-500 dark:text-slate-400">Processed By</div>
+            <div class="mt-1 font-medium">Finance Bot</div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400">Auto-verified</div>
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <p class="mt-4 text-xs text-slate-500 dark:text-slate-400">
+          Keep this receipt for your records. For disputes or questions, contact support with your reference number.
+        </p>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <div class="mt-6 grid grid-cols-1 gap-3">
+      <a href="#" class="flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-3 text-sm font-medium">
+        <!-- Download icon -->
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/>
+        </svg>
+        Download PDF
+      </a>
+      <button class="flex items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 py-3 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-900/60">
+        <!-- Share icon -->
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 3.9"/><path d="M15.4 6.6L8.6 10.5"/>
+        </svg>
+        Share receipt
+      </button>
+      <a href="wallet.html" class="block rounded-xl border border-slate-200 dark:border-slate-700 py-3 text-sm font-medium text-center">
+        Back to Wallet
+      </a>
+    </div>
+
+    <p class="mt-5 text-center text-[11px] text-slate-500 dark:text-slate-400">
+      Receipt ID: <span class="font-mono">RCT-8F2K93</span> · Ref: <span class="font-mono">REF-9X3B2K</span>
+    </p>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-700 bg-white/85 dark:bg-slate-900/80 backdrop-blur">
+    <div class="max-w-sm mx-auto grid grid-cols-4 text-center py-2 text-xs font-medium">
+      <a href="wallet.html" class="flex flex-col items-center text-emerald-600 dark:text-emerald-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 6h20M2 18h20"/></svg>
+        Wallet
+      </a>
+      <a href="cards.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v8m4-4H8"/></svg>
+        Cards
+      </a>
+      <a href="notifications.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1 1 12 0v5l2 2H4l2-2z"/><path d="M9 18a3 3 0 0 0 6 0"/></svg>
+        Alerts
+      </a>
+      <a href="settings.html" class="flex flex-col items-center text-slate-500 dark:text-slate-400">
+        <svg class="h-6 w-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-4 0v-.06a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 1 1 0-4h.06c.66 0 1.26-.39 1.51-1z"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- (Optional) JS: generate printable/PDF version -->
+  <script>
+    // Hook this to your server-side PDF generator: /api/receipts/{id}/pdf
+    document.querySelector('a[href="#"]').addEventListener('click', (e) => {
+      e.preventDefault();
+      // Example: window.location = `/api/receipts/RCT-8F2K93/pdf`;
+      window.print(); // fallback: print dialog
+    });
+  </script>
+</body>
+</html>

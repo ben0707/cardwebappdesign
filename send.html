@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Send — Wallet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#f3f8ff',100:'#e6f0ff',200:'#cfe0ff',300:'#a7c6ff',400:'#78a6ff',500:'#4a86ff',600:'#2e6cf3',700:'#1f55c4',800:'#1c469a',900:'#1a3c7c' }
+          },
+          boxShadow: {
+            soft: '0 2px 10px rgba(0,0,0,0.06)',
+            card: '0 1px 0 rgba(0,0,0,0.03), 0 8px 20px rgba(0,0,0,0.06)',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full bg-neutral-50 text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur shadow-sm dark:bg-neutral-900/80">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-14 items-center justify-between">
+        <a href="#" class="inline-flex items-center gap-2">
+          <div class="grid h-8 w-8 place-items-center rounded-xl bg-brand-500 text-white text-sm font-semibold">W</div>
+          <span class="text-base font-semibold">Wallet</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-2 text-sm">
+          <a href="#" class="px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800">Overview</a>
+          <a href="#" class="px-3 py-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 font-medium">Send</a>
+          <a href="#" class="px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800">Receive</a>
+          <a href="#" class="px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800">Activity</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page -->
+  <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <!-- Form -->
+      <section class="lg:col-span-2 rounded-2xl border border-neutral-200 bg-white p-5 shadow-card dark:border-neutral-800 dark:bg-neutral-900">
+        <div class="mb-5">
+          <h1 class="text-xl font-semibold tracking-tight">Send crypto</h1>
+          <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">Choose an asset, set amount, and confirm the recipient.</p>
+        </div>
+
+        <!-- Network Mismatch / Info -->
+        <div id="banner" class="hidden mb-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-900/30 dark:text-amber-300">
+          Heads up: The selected network doesn’t match the address format. Double-check before sending.
+        </div>
+
+        <form id="sendForm" class="space-y-5">
+          <!-- Asset -->
+          <div>
+            <label class="mb-1 block text-sm font-medium">Asset</label>
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div class="relative">
+                <select id="asset" class="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2.5 pr-8 text-sm shadow-soft focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-900">
+                  <option value="BTC" data-decimals="8" data-price="62000000">BTC • Bitcoin</option>
+                  <option value="ETH" data-decimals="6" data-price="3800000">ETH • Ethereum</option>
+                  <option value="USDT" data-decimals="2" data-price="1600">USDT • Tether</option>
+                </select>
+                <div class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 opacity-60">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+              </div>
+              <div class="relative">
+                <select id="network" class="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2.5 pr-8 text-sm shadow-soft focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-900">
+                  <option value="BTC">Bitcoin (BTC)</option>
+                  <option value="ETH">Ethereum (ERC20)</option>
+                  <option value="TRON">Tron (TRC20)</option>
+                </select>
+                <div class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 opacity-60">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+              </div>
+            </div>
+            <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Make sure the address supports the chosen network.</p>
+          </div>
+
+          <!-- Recipient -->
+          <div>
+            <label class="mb-1 block text-sm font-medium">Recipient address</label>
+            <div class="flex items-center gap-2">
+              <input id="to" type="text" inputmode="text" placeholder="0x… or bc1… or T…" class="flex-1 rounded-xl border border-neutral-200 bg-white px-3 py-2.5 text-sm shadow-soft focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-900" />
+              <button type="button" class="rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm shadow-soft hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800" title="Scan QR">
+                <svg class="h-5 w-5 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M8 8h8v8H8z"/></svg>
+              </button>
+            </div>
+            <p id="addrHint" class="mt-2 hidden text-xs text-rose-600">This address might not match the selected network.</p>
+          </div>
+
+          <!-- Amount -->
+          <div>
+            <div class="mb-1 flex items-center justify-between">
+              <label class="block text-sm font-medium">Amount</label>
+              <div class="text-xs text-neutral-500 dark:text-neutral-400">Balance: <span id="balance">3.024</span> <span id="assetLabel">ETH</span></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <input id="amount" type="number" min="0" step="any" placeholder="0.00" class="flex-1 rounded-xl border border-neutral-200 bg-white px-3 py-2.5 text-sm shadow-soft focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-900" />
+              <button type="button" id="maxBtn" class="rounded-xl bg-neutral-100 px-3 py-2 text-xs font-medium hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700">MAX</button>
+            </div>
+            <div class="mt-2 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
+              <span>≈ <span id="fiatValue">₦0</span></span>
+              <span id="precisionHint">Up to 6 decimals allowed</span>
+            </div>
+          </div>
+
+          <!-- Fee speed -->
+          <div>
+            <label class="mb-1 block text-sm font-medium">Fee speed</label>
+            <div class="grid grid-cols-3 gap-2">
+              <label class="group relative flex cursor-pointer items-center justify-between rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm shadow-soft hover:border-brand-300 has-[:checked]:border-brand-500 dark:border-neutral-700 dark:bg-neutral-900">
+                <input type="radio" name="fee" value="standard" class="peer absolute inset-0 opacity-0" checked>
+                <span>Standard</span>
+                <span class="text-xs text-neutral-500 peer-checked:text-brand-600">~5–15m</span>
+              </label>
+              <label class="group relative flex cursor-pointer items-center justify-between rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm shadow-soft hover:border-brand-300 has-[:checked]:border-brand-500 dark:border-neutral-700 dark:bg-neutral-900">
+                <input type="radio" name="fee" value="fast" class="peer absolute inset-0 opacity-0">
+                <span>Fast</span>
+                <span class="text-xs text-neutral-500 peer-checked:text-brand-600">~1–5m</span>
+              </label>
+              <label class="group relative flex cursor-pointer items-center justify-between rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm shadow-soft hover:border-brand-300 has-[:checked]:border-brand-500 dark:border-neutral-700 dark:bg-neutral-900">
+                <input type="radio" name="fee" value="priority" class="peer absolute inset-0 opacity-0">
+                <span>Priority</span>
+                <span class="text-xs text-neutral-500 peer-checked:text-brand-600"><1m</span>
+              </label>
+            </div>
+            <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Network fees vary with congestion.</p>
+          </div>
+
+          <!-- Memo / Tag (optional for some networks) -->
+          <div id="memoWrap" class="hidden">
+            <div class="mb-1 flex items-center justify-between">
+              <label class="block text-sm font-medium">Memo / Tag (optional)</label>
+              <span class="text-xs text-neutral-500">Required by some exchanges</span>
+            </div>
+            <input id="memo" type="text" placeholder="e.g. Destination Tag for XRP" class="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2.5 text-sm shadow-soft focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-900" />
+          </div>
+
+          <!-- Summary -->
+          <div class="rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm dark:border-neutral-800 dark:bg-neutral-900/60">
+            <div class="flex items-center justify-between py-1">
+              <span>Amount</span><span><span id="sumAmount">0.00</span> <span id="sumAsset">ETH</span></span>
+            </div>
+            <div class="flex items-center justify-between py-1">
+              <span>Estimated network fee</span><span><span id="sumFee">0.00</span> <span id="feeAsset">ETH</span></span>
+            </div>
+            <div class="mt-2 border-t border-dashed border-neutral-200 pt-2 dark:border-neutral-800"></div>
+            <div class="flex items-center justify-between py-1 font-medium">
+              <span>Total</span><span><span id="sumTotal">0.00</span> <span id="totalAsset">ETH</span></span>
+            </div>
+            <div class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">≈ <span id="sumFiat">₦0</span></div>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex items-center justify-end gap-2 pt-2">
+            <button type="button" class="rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm shadow-soft hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">Cancel</button>
+            <button id="continueBtn" type="button" class="rounded-xl bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60" disabled>Continue</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Right column: tips / recent -->
+      <aside class="rounded-2xl border border-neutral-200 bg-white p-5 shadow-card dark:border-neutral-800 dark:bg-neutral-900">
+        <h2 class="text-base font-semibold tracking-tight">Tips</h2>
+        <ul class="mt-3 space-y-2 text-sm text-neutral-600 dark:text-neutral-300">
+          <li>• Only send to addresses compatible with the selected network.</li>
+          <li>• Small test transfers help verify new recipients.</li>
+          <li>• Some exchanges require a memo/tag. Check deposit instructions.</li>
+        </ul>
+
+        <h3 class="mt-6 text-sm font-semibold">Recent recipients</h3>
+        <div class="mt-2 space-y-2">
+          <button class="w-full truncate rounded-lg border border-neutral-200 px-3 py-2 text-left text-xs hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800">0x91c4…7C2 (ETH)</button>
+          <button class="w-full truncate rounded-lg border border-neutral-200 px-3 py-2 text-left text-xs hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800">bc1q…9f2 (BTC)</button>
+          <button class="w-full truncate rounded-lg border border-neutral-200 px-3 py-2 text-left text-xs hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800">TQz…R8p (TRON)</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation (Mobile) -->
+  <nav class="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-3xl border-t border-neutral-200 bg-white/95 backdrop-blur px-4 py-2 shadow-soft dark:border-neutral-800 dark:bg-neutral-900/90 md:hidden">
+    <div class="grid grid-cols-4 gap-3 text-sm">
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-neutral-500 hover:text-brand-600 transition">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9.5L12 3l9 6.5v11a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+        Home
+      </a>
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-brand-600 font-medium">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="M16 10h4v4h-4z"/></svg>
+        Wallet
+      </a>
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-neutral-500 hover:text-brand-600 transition">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/><path d="M7 15h.01M11 15h2"/></svg>
+        Cards
+      </a>
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-neutral-500 hover:text-brand-600 transition">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .69.28 1.35.78 1.82.5.47 1.17.68 1.82.68H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- Confirm Sheet -->
+  <div id="confirmSheet" class="fixed inset-0 z-50 hidden items-end justify-center bg-black/40 p-4 md:items-center">
+    <div class="w-full max-w-md rounded-2xl border border-neutral-200 bg-white p-5 shadow-card dark:border-neutral-700 dark:bg-neutral-900">
+      <h3 class="text-base font-semibold">Confirm send</h3>
+      <div class="mt-3 space-y-1 text-sm">
+        <div class="flex justify-between"><span>To</span><span id="c_to" class="truncate max-w-[60%] text-right"></span></div>
+        <div class="flex justify-between"><span>Asset</span><span><span id="c_asset">ETH</span> (<span id="c_network">ERC20</span>)</span></div>
+        <div class="flex justify-between"><span>Amount</span><span id="c_amount">0.00</span></div>
+        <div class="flex justify-between"><span>Fee</span><span id="c_fee">0.00</span></div>
+        <div class="border-t border-dashed border-neutral-200 pt-2 dark:border-neutral-800"></div>
+        <div class="flex justify-between font-medium"><span>Total</span><span id="c_total">0.00</span></div>
+      </div>
+      <div class="mt-4 flex items-center justify-end gap-2">
+        <button id="cancelConfirm" class="rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm shadow-soft hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">Back</button>
+        <button class="rounded-xl bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">Send now</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Demo balances/prices (replace with real data)
+    const demoBalances = { BTC: 0.2145, ETH: 3.024, USDT: 2910 };
+    const NGN = (v)=> new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN',maximumFractionDigits:0}).format(v);
+
+    const els = {
+      asset: document.getElementById('asset'),
+      network: document.getElementById('network'),
+      to: document.getElementById('to'),
+      amount: document.getElementById('amount'),
+      balance: document.getElementById('balance'),
+      assetLabel: document.getElementById('assetLabel'),
+      precisionHint: document.getElementById('precisionHint'),
+      fiatValue: document.getElementById('fiatValue'),
+      banner: document.getElementById('banner'),
+      addrHint: document.getElementById('addrHint'),
+      maxBtn: document.getElementById('maxBtn'),
+      // summary
+      sumAmount: document.getElementById('sumAmount'),
+      sumFee: document.getElementById('sumFee'),
+      sumTotal: document.getElementById('sumTotal'),
+      sumFiat: document.getElementById('sumFiat'),
+      sumAsset: document.getElementById('sumAsset'),
+      feeAsset: document.getElementById('feeAsset'),
+      totalAsset: document.getElementById('totalAsset'),
+      continueBtn: document.getElementById('continueBtn'),
+      // confirm
+      sheet: document.getElementById('confirmSheet'),
+      c_to: document.getElementById('c_to'),
+      c_asset: document.getElementById('c_asset'),
+      c_network: document.getElementById('c_network'),
+      c_amount: document.getElementById('c_amount'),
+      c_fee: document.getElementById('c_fee'),
+      c_total: document.getElementById('c_total'),
+      cancelConfirm: document.getElementById('cancelConfirm')
+    };
+
+    function syncAssetUI(){
+      const opt = els.asset.options[els.asset.selectedIndex];
+      const asset = opt.value;
+      const decimals = Number(opt.dataset.decimals || 6);
+      const price = Number(opt.dataset.price || 0);
+      els.assetLabel.textContent = asset;
+      els.balance.textContent = demoBalances[asset] ?? 0;
+      els.precisionHint.textContent = `Up to ${decimals} decimals allowed`;
+      els.sumAsset.textContent = asset;
+      els.feeAsset.textContent = asset;
+      els.totalAsset.textContent = asset;
+      // memo hint (example: show for XRP/XLM if you add them)
+      document.getElementById('memoWrap').classList.toggle('hidden', !['XRP','XLM'].includes(asset));
+      // recalc fiat
+      updateTotals(price);
+    }
+
+    function estimateFee(asset, network, speed){
+      // super-simplified fee estimation (replace with live data)
+      const base = { BTC: 0.00012, ETH: 0.0025, USDT: 0.9 }; // in asset (USDT fee is flat)
+      const mul = speed==='priority' ? 1.8 : speed==='fast' ? 1.2 : 1.0;
+      let fee = base[asset] ? base[asset] * mul : 0.0005;
+      // USDT on TRON cheaper
+      if(asset==='USDT' && network==='TRON') fee = 0.2 * mul;
+      if(asset==='USDT' && network==='ETH') fee = 1.5 * mul;
+      return fee;
+    }
+
+    function addressLooksLike(net, addr){
+      if(!addr) return true;
+      if(net==='BTC') return /^(bc1|[13])[a-zA-Z0-9]{20,}$/i.test(addr);
+      if(net==='ETH') return /^0x[a-fA-F0-9]{40}$/.test(addr);
+      if(net==='TRON') return /^T[1-9A-HJ-NP-Za-km-z]{25,34}$/.test(addr);
+      return true;
+    }
+
+    function updateTotals(price){
+      const asset = els.asset.value;
+      const network = els.network.value;
+      const speed = (document.querySelector('input[name="fee"]:checked')||{}).value || 'standard';
+      const amt = Number(els.amount.value || 0);
+      const fee = estimateFee(asset, network, speed);
+      els.sumAmount.textContent = amt.toFixed(8).replace(/\.?0+$/,'');
+      els.sumFee.textContent = fee.toFixed(8).replace(/\.?0+$/,'');
+      els.sumTotal.textContent = (amt + fee).toFixed(8).replace(/\.?0+$/,'');
+      const fiat = price * amt;
+      els.fiatValue.textContent = NGN(fiat);
+      els.sumFiat.textContent = NGN(price * (amt + fee));
+      // enable continue
+      const hasBal = (demoBalances[asset] ?? 0) >= (amt + fee) && amt > 0;
+      const addrOK = addressLooksLike(network, els.to.value);
+      els.continueBtn.disabled = !(hasBal && addrOK);
+      // banners
+      const showWarn = els.to.value && !addrOK;
+      els.banner.classList.toggle('hidden', !showWarn);
+      els.addrHint.classList.toggle('hidden', !showWarn);
+    }
+
+    // Events
+    els.asset.addEventListener('change', syncAssetUI);
+    els.network.addEventListener('change', ()=>updateTotals(Number(els.asset.options[els.asset.selectedIndex].dataset.price)));
+    els.amount.addEventListener('input', ()=>updateTotals(Number(els.asset.options[els.asset.selectedIndex].dataset.price)));
+    els.to.addEventListener('input', ()=>updateTotals(Number(els.asset.options[els.asset.selectedIndex].dataset.price)));
+    document.querySelectorAll('input[name="fee"]').forEach(r=>r.addEventListener('change', ()=>updateTotals(Number(els.asset.options[els.asset.selectedIndex].dataset.price))));
+    els.maxBtn.addEventListener('click', ()=>{
+      const asset = els.asset.value;
+      const network = els.network.value;
+      const speed = (document.querySelector('input[name="fee"]:checked')||{}).value || 'standard';
+      const bal = Number(demoBalances[asset] ?? 0);
+      const fee = estimateFee(asset, network, speed);
+      const maxAmt = Math.max(bal - fee, 0);
+      els.amount.value = maxAmt > 0 ? maxAmt.toFixed(8).replace(/\.?0+$/,'') : '';
+      updateTotals(Number(els.asset.options[els.asset.selectedIndex].dataset.price));
+    });
+
+    // Confirm flow
+    els.continueBtn.addEventListener('click', ()=>{
+      const price = Number(els.asset.options[els.asset.selectedIndex].dataset.price);
+      els.c_to.textContent = els.to.value;
+      els.c_asset.textContent = els.asset.value;
+      els.c_network.textContent = els.network.value;
+      els.c_amount.textContent = `${els.sumAmount.textContent} ${els.asset.value}`;
+      els.c_fee.textContent = `${els.sumFee.textContent} ${els.asset.value}`;
+      els.c_total.textContent = `${els.sumTotal.textContent} ${els.asset.value} • ${NGN(price * (Number(els.sumTotal.textContent) || 0))}`;
+      els.sheet.classList.remove('hidden');
+      els.sheet.classList.add('flex');
+    });
+    els.cancelConfirm.addEventListener('click', ()=>{
+      els.sheet.classList.add('hidden');
+      els.sheet.classList.remove('flex');
+    });
+
+    // init
+    syncAssetUI();
+    updateTotals(Number(els.asset.options[els.asset.selectedIndex].dataset.price));
+  </script>
+</body>
+</html>
